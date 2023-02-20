@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import React from "react";
 import * as Yup from "yup";
 import {
   Box,
@@ -19,9 +20,7 @@ export const Login = () => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
@@ -77,11 +76,11 @@ export const Login = () => {
             <TextField
               label="Password"
               name="password"
+              type="password"
               fullWidth={true}
               value={formik.values.password}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              multiline={true}
               required
             />
             {formik.errors.password

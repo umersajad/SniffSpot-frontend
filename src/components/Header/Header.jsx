@@ -4,6 +4,7 @@ import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
@@ -71,12 +72,15 @@ const Header = () => {
           <Box>
             {authToken && (
               <IconButton onClick={handleAddNew} size="large">
+                <Typography variant="button" sx={{ mr: 1 }}>
+                  Add Spot
+                </Typography>
                 <AddBoxIcon />
               </IconButton>
             )}
             {authToken && (
               <IconButton onClick={handleLogout} size="large">
-                <ExitToAppIcon />
+                <LogoutIcon />
               </IconButton>
             )}
             {!authToken && (
