@@ -8,6 +8,7 @@ import CreateSpot from "./pages/createSpot";
 import EditSpot from "./pages/editSpot";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../src/redux/store/store";
+
 function App() {
   return (
     <Provider store={store}>
