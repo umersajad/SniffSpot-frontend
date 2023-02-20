@@ -17,8 +17,12 @@ export const CreateSpot = () => {
   const formik = useFormik({
     initialValues: { title: "", description: "", price: "", images: [] },
     validationSchema: Yup.object({
-      title: Yup.string().required("Required"),
-      description: Yup.string().required("Required"),
+      title: Yup.string()
+        .required("Required")
+        .max(50, "should be less than 50 characters"),
+      description: Yup.string()
+        .required("Required")
+        .max(150, "should be less than 150 characters"),
       price: Yup.number().required("Required"),
       images: Yup.array().min(1, "At least one image is required"),
     }),

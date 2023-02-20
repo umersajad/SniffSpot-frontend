@@ -17,6 +17,7 @@ export const SpotDetails = () => {
   const navigate = useNavigate();
   const [spot, setSpot] = useState({});
   const userId = localStorage.getItem("userId");
+  const authToken = localStorage.getItem("authToken");
   const [content, setContent] = useState("");
   let { id } = useParams();
 
@@ -107,22 +108,26 @@ export const SpotDetails = () => {
             justifyContent: "space-between",
           }}
         >
-          <TextField
-            label="Add a Review"
-            variant="outlined"
-            sx={{ pb: 5, width: "85%" }}
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
-          />
+          {authToken && (
+            <>
+              <TextField
+                label="Add a Review"
+                variant="outlined"
+                sx={{ pb: 5, width: "85%" }}
+                value={content}
+                onChange={(event) => setContent(event.target.value)}
+              />
 
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ height: "50px", width: "100px", p: 3.5 }}
-            onClick={handleReview}
-          >
-            Add a Review
-          </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ height: "50px", width: "100px", p: 3.5 }}
+                onClick={handleReview}
+              >
+                Add a Review
+              </Button>
+            </>
+          )}
         </div>
         {spot.reviews &&
           spot.reviews.map((review) => {

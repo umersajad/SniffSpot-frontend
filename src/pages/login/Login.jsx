@@ -19,7 +19,9 @@ export const Login = () => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Required"),
       password: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
@@ -30,7 +32,7 @@ export const Login = () => {
           navigate("/");
           window.location.reload();
         } else {
-          console.log(response.error?.message);
+          alert("Invalid Username or password.");
         }
       };
       handleLoginForm(values);
